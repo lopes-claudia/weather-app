@@ -1,0 +1,99 @@
+body {
+  font-family: "Barlow Semi Condensed", sans-serif;
+  margin: 100px auto;
+  background-repeat: no-repeat;
+  max-width: 700px;
+  background-color: #383e3e;
+  color: teal;
+}
+
+small {
+  color: #e3fdf5;
+  display: block;
+  text-align: right;
+}
+
+.weather-app,
+.forecast {
+  background-image: linear-gradient(-225deg, #e3fdf5 0%, #ffe6fa 100%);
+  padding: 15px;
+}
+
+.weather-app {
+  border-radius: 15px 15px 0px 0px;
+  max-height: 180px;
+  margin-bottom: 2px;
+}
+.forecast {
+  border-radius: 0px 0px 15px 15px;
+  max-height: 135px;
+}
+.currentInfo {
+  margin-top: 15px;
+  line-height: 1.4;
+}
+
+.cityInfo li,
+.cityInfo ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+.humWind li,
+.humWind ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+.humWind {
+  padding-top: 30px;
+  line-height: 1.5;
+  font-size: 15px;
+}
+#submitButton {
+  background-color: teal;
+  color: white;
+  border: transparent;
+}
+#currentLocalButton {
+  background-color: rgb(19, 105, 105);
+  color: white;
+  border: transparent;
+}
+#currentLocalButton:hover,
+#submitButton:hover {
+  background-color: rgba(0, 128, 128, 0.404);
+}
+.atualDate {
+  text-align: right;
+  font-size: 15px;
+}
+
+#description,
+#city:first-letter {
+  text-transform: capitalize;
+}
+#city {
+  font-weight: bold;
+  font-size: 27px;
+}
+#temperature {
+  font-weight: bold;
+  font-size: 23px;
+}
+#CurrIcon {
+  font-size: 50px;
+}
+
+#conversion {
+  font-size: 12px;
+  padding-left: 15px;
+}
+#WeatherIcon {
+  font-size: 30px;
+  color: #757575;
+}
+.forecastInfo {
+  text-align: center;
+}

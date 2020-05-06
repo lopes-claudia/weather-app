@@ -18,6 +18,110 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
   <body>
+    <div class="container">
+      <div class="weather-app">
+        <div class="row">
+          <div class="col-6">
+            <form id="search-form">
+              <input type="text" placeholder=" Search city" id="cityInput" />
+              <button
+                type="submit"
+                class="btn btn-outline-success btn-sm"
+                id="submitButton"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+          <div class="col-6">
+            <button
+              type="button"
+              class="btn btn-outline-primary btn-sm"
+              id="currentLocalButton"
+            >
+              Current location
+            </button>
+          </div>
+        </div>
+        <div class="row currentInfo">
+          <div class="col-2">
+            <i class="fas fa-cloud-sun" id="CurrIcon"></i>
+          </div>
+          <div class="col-4 cityInfo">
+            <ul>
+              <li id="city"></li>
+              <li>
+                <span id="temperature"> </span>
+                <span id="conversion">
+                  <a href="#" id="celsius" class="active disabled">ºC</a> |
+                  <a href="#" id="fahr">ºF</a>
+                </span>
+              </li>
+              <li id="description">Partly cloudys</li>
+            </ul>
+          </div>
+          <div class="col-2 humWind">
+            <ul>
+              <li><i class="fas fa-tint"> </i> <span id="humidity"></span>%</li>
+              <li><i class="fas fa-wind"></i> <span id="wind"></span> km/h</li>
+            </ul>
+          </div>
+          <div class="col-4 atualDate">
+            <span id="dateText"></span>
+            <p>
+              Last updated at
+              <span class="atualHour" id="hour"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="forecast">
+        <div class="row forecastInfo">
+          <div class="col">
+            <h5 class="day">Mon 23</h5>
+            <i class="fas fa-cloud-sun" id="WeatherIcon"></i>
+            <p class="temperature">
+              21ºC
+            </p>
+          </div>
+          <div class="col">
+            <h5 class="day">Tue 24</h5>
+            <i class="fas fa-cloud-sun" id="WeatherIcon"></i>
+            <p class="temperature">
+              21ºC
+            </p>
+          </div>
+          <div class="col">
+            <h5 class="day">Wed 25</h5>
+            <i class="fas fa-cloud-sun" id="WeatherIcon"></i>
+            <p class="temperature">
+              21ºC
+            </p>
+          </div>
+          <div class="col">
+            <h5 class="day">Thu 26</h5>
+            <i class="fas fa-cloud-sun" id="WeatherIcon"></i>
+            <p class="temperature">
+              21ºC
+            </p>
+          </div>
+          <div class="col">
+            <h5 class="day">Fri 26</h5>
+            <i class="fas fa-cloud-sun" id="WeatherIcon"></i>
+            <p class="temperature">
+              21ºC
+            </p>
+          </div>
+        </div>
+      </div>
+      <small>
+        <a href="https://github.com/lopes-claudia/weather-app">
+          Open-source code</a
+        >
+        by Cláudia Lopes
+      </small>
+    </div>
     <script src="src/index.js"></script>
   </body>
 </html>
