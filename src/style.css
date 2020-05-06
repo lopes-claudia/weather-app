@@ -15,7 +15,7 @@ small {
 
 .weather-app,
 .forecast {
-  background-image: linear-gradient(-225deg, #e3fdf5 0%, #ffe6fa 100%);
+  background-image: linear-gradient(-220deg, #acd4c8 0%, #f3d5ed 120%);
   padding: 15px;
 }
 
@@ -71,8 +71,7 @@ small {
   color: grey;
 }
 
-#description,
-#city:first-letter {
+#description::first-letter {
   text-transform: capitalize;
 }
 #city {
@@ -81,12 +80,11 @@ small {
 }
 #temperature {
   font-weight: bold;
-  font-size: 23px;
+  font-size: 25px;
+  color: rgb(73, 73, 73);
 }
-#CurrIcon {
-  font-size: 50px;
+#icon {
 }
-
 #conversion {
   font-size: 12px;
   padding-left: 15px;

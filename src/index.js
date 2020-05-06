@@ -51,14 +51,20 @@ function showData(response) {
   let wind = document.querySelector("#wind");
   let dateText = document.querySelector("#dateText");
   let hourText = document.querySelector("#hour");
+  let iconElement = document.querySelector("#icon");
 
   cityText.innerHTML = response.data.name;
-  description.innerHTML = response.data.weather[0].main;
+  description.innerHTML = response.data.weather[0].description;
   currentTemp.innerHTML = `${Math.round(response.data.main.temp)}`;
   humidity.innerHTML = response.data.main.humidity;
   wind.innerHTML = `${Math.round(response.data.wind.speed)}`;
   dateText.innerHTML = formatDate(response.data.dt * 1000);
   hourText.innerHTML = formatHour(response.data.dt * 1000);
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].main);
 }
 
 function search(city) {
