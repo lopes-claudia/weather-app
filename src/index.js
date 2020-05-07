@@ -52,10 +52,11 @@ function showData(response) {
   let dateText = document.querySelector("#dateText");
   let hourText = document.querySelector("#hour");
   let iconElement = document.querySelector("#icon");
+  celsiusTemperature = response.data.main.temp;
 
   cityText.innerHTML = response.data.name;
   description.innerHTML = response.data.weather[0].description;
-  currentTemp.innerHTML = `${Math.round(response.data.main.temp)}`;
+  currentTemp.innerHTML = Math.round(response.data.main.temp);
   humidity.innerHTML = response.data.main.humidity;
   wind.innerHTML = `${Math.round(response.data.wind.speed)}`;
   dateText.innerHTML = formatDate(response.data.dt * 1000);
@@ -75,10 +76,10 @@ function search(city) {
 function handleSubmit(event) {
   event.preventDefault();
   let cityName = document.querySelector("#cityInput");
+  celsius.classList.add("active");
+  fahrLink.classList.remove("active");
   search(cityName.value);
 }
-let form = document.querySelector("#search-form");
-form.addEventListener("submit", handleSubmit);
 
 function searchPosition(position) {
   let apiKey = "c0e0b980f102072597435ae370a068d6";
@@ -86,6 +87,8 @@ function searchPosition(position) {
   let long = position.coords.longitude;
   let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${apiKey}`;
   axios.get(url).then(showData);
+  celsius.classList.add("active");
+  fahrLink.classList.remove("active");
 }
 
 function retrievePos(event) {
@@ -95,5 +98,33 @@ function retrievePos(event) {
 
 let positionButton = document.querySelector("#currentLocalButton");
 positionButton.addEventListener("click", retrievePos);
+
+function showFahrTemp(event) {
+  event.preventDefault();
+  let currentTemp = document.querySelector("#temperature");
+  let fahrTemperature = (celsiusTemperature * 9) / 5 + 32;
+  currentTemp.innerHTML = Math.round(fahrTemperature);
+  celsius.classList.remove("active");
+  fahrLink.classList.add("active");
+}
+
+function showCelsiusTemp(event) {
+  event.preventDefault();
+  let currentTemp = document.querySelector("#temperature");
+  currentTemp.innerHTML = Math.round(celsiusTemperature);
+  celsius.classList.add("active");
+  fahrLink.classList.remove("active");
+}
+
+let celsiusTemperature = null;
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
+
+let fahrLink = document.querySelector("#fahr");
+fahrLink.addEventListener("click", showFahrTemp);
+
+let celsiusLink = document.querySelector("#celsius");
+celsiusLink.addEventListener("click", showCelsiusTemp);
 
 search("Lisbon");
