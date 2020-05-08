@@ -68,11 +68,35 @@ function showData(response) {
   iconElement.setAttribute("alt", response.data.weather[0].main);
 }
 
+function displayForecast(response) {
+  let forecastSection = document.querySelector("#weather-forecast");
+  let forecast = null;
+  forecastSection.innerHTML = null;
+  for (let i = 0; i <= 5; i++) {
+    forecast = response.data.list[i];
+    forecastSection.innerHTML += `<div class="col-2">
+              <h5>${formatHour(forecast.dt * 1000)}</h5>
+               <img src="http://openweathermap.org/img/wn/${
+                 forecast.weather[0].icon
+               }@2x.png" id="icon-forecast" />
+              <div class="forecastTemperature">
+                <strong><span id="max">${Math.round(
+                  forecast.main.temp_max
+                )}º </span></strong>|
+                <span id="min">${Math.round(forecast.main.temp_min)}º</span>
+              </div>
+            </div>`;
+  }
+}
+
 function search(city) {
   let apiKey = "c0e0b980f102072597435ae370a068d6";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
   axios.get(apiUrl).then(showData);
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
+
 function handleSubmit(event) {
   event.preventDefault();
   let cityName = document.querySelector("#cityInput");
@@ -89,6 +113,9 @@ function searchPosition(position) {
   axios.get(url).then(showData);
   celsius.classList.add("active");
   fahrLink.classList.remove("active");
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function retrievePos(event) {

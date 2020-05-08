@@ -14,7 +14,10 @@ small {
 }
 
 h5 {
-  font-size: 18px;
+  font-size: 14px;
+  margin-bottom: 0;
+  line-height: 0;
+  margin-top: 10px;
 }
 
 .weather-app,
@@ -25,12 +28,10 @@ h5 {
 
 .weather-app {
   border-radius: 15px 15px 0px 0px;
-  max-height: 180px;
   margin-bottom: 2px;
 }
 .forecast {
   border-radius: 0px 0px 15px 15px;
-  max-height: 135px;
   text-align: center;
 }
 .currentInfo {
@@ -108,4 +109,20 @@ h5 {
 .active:hover {
   text-decoration: none;
   color: rgb(73, 73, 73);
+}
+
+#max {
+  font-size: 15px;
+}
+
+#min {
+  font-size: 13px;
+}
+.forecastTemperature {
+  color: rgb(73, 73, 73);
+  line-height: 1;
+}
+
+#icon-forecast {
+  width: 60px;
 }
