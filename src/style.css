@@ -2,9 +2,9 @@ body {
   font-family: "Barlow Semi Condensed", sans-serif;
   margin: 100px auto;
   background-repeat: no-repeat;
-  max-width: 700px;
   background-color: #383e3e;
   color: teal;
+  max-width: 700px;
 }
 
 small {
@@ -20,23 +20,46 @@ h5 {
   margin-top: 10px;
 }
 
-.weather-app,
-.forecast {
+.weather-app {
   background-image: linear-gradient(-220deg, #acd4c8 0%, #f3d5ed 120%);
   padding: 15px;
-}
-
-.weather-app {
   border-radius: 15px 15px 0px 0px;
   margin-bottom: 2px;
 }
+
 .forecast {
+  background-image: linear-gradient(-220deg, #acd4c8 0%, #f3d5ed 120%);
+  padding: 15px;
   border-radius: 0px 0px 15px 15px;
   text-align: center;
 }
+
+#cityInput {
+  border-radius: 5px;
+}
+#submitButton {
+  background-color: teal;
+  color: white;
+  border: transparent;
+}
+
+#currentLocalButton {
+  background-color: rgb(19, 105, 105);
+  color: white;
+  border: transparent;
+}
+
 .currentInfo {
   margin-top: 15px;
-  line-height: 1.4;
+}
+
+.cityInfo {
+  padding: 0;
+}
+#icon {
+  width: 100px;
+  position: relative;
+  right: 10px;
 }
 
 .cityInfo li,
@@ -54,27 +77,22 @@ h5 {
 }
 .humWind {
   padding-top: 30px;
+  padding-left: 0px;
+  padding-right: 0px;
   line-height: 2.2;
   font-size: 15px;
 }
-#submitButton {
-  background-color: teal;
-  color: white;
-  border: transparent;
-}
-#currentLocalButton {
-  background-color: rgb(19, 105, 105);
-  color: white;
-  border: transparent;
-}
+
 #currentLocalButton:hover,
 #submitButton:hover {
   background-color: rgba(0, 128, 128, 0.404);
 }
+
 .atualDate {
   text-align: right;
   font-size: 15px;
   color: grey;
+  padding-left: 0px;
 }
 
 #description::first-letter {
@@ -95,10 +113,6 @@ h5 {
   padding-left: 1px;
   position: relative;
   bottom: 10px;
-}
-#WeatherIcon {
-  font-size: 30px;
-  color: #757575;
 }
 
 .active {
@@ -125,4 +139,8 @@ h5 {
 
 #icon-forecast {
   width: 60px;
+  margin: 0 auto;
+}
+.hourForecast {
+  padding: 0px;
 }

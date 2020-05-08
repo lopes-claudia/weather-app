@@ -74,7 +74,7 @@ function displayForecast(response) {
   forecastSection.innerHTML = null;
   for (let i = 0; i <= 5; i++) {
     forecast = response.data.list[i];
-    forecastSection.innerHTML += `<div class="col-2">
+    forecastSection.innerHTML += `<div class="col-2 hourForecast">
               <h5>${formatHour(forecast.dt * 1000)}</h5>
                <img src="http://openweathermap.org/img/wn/${
                  forecast.weather[0].icon
@@ -103,7 +103,11 @@ function handleSubmit(event) {
   celsius.classList.add("active");
   fahrLink.classList.remove("active");
   search(cityName.value);
+  cityName.value = "";
 }
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
 
 function searchPosition(position) {
   let apiKey = "c0e0b980f102072597435ae370a068d6";
@@ -144,9 +148,6 @@ function showCelsiusTemp(event) {
 }
 
 let celsiusTemperature = null;
-
-let form = document.querySelector("#search-form");
-form.addEventListener("submit", handleSubmit);
 
 let fahrLink = document.querySelector("#fahr");
 fahrLink.addEventListener("click", showFahrTemp);
