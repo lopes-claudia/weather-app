@@ -56,7 +56,7 @@ function showData(response) {
 
   cityText.innerHTML = response.data.name;
   description.innerHTML = response.data.weather[0].description;
-  currentTemp.innerHTML = Math.round(response.data.main.temp);
+  currentTemp.innerHTML = Math.round(celsiusTemperature);
   humidity.innerHTML = response.data.main.humidity;
   wind.innerHTML = `${Math.round(response.data.wind.speed)}`;
   dateText.innerHTML = formatDate(response.data.dt * 1000);
@@ -72,20 +72,24 @@ function displayForecast(response) {
   let forecastSection = document.querySelector("#weather-forecast");
   let forecast = null;
   forecastSection.innerHTML = null;
+
   for (let i = 0; i <= 5; i++) {
     forecast = response.data.list[i];
     forecastSection.innerHTML += `<div class="col-2 hourForecast">
-              <h5>${formatHour(forecast.dt * 1000)}</h5>
-               <img src="http://openweathermap.org/img/wn/${
-                 forecast.weather[0].icon
-               }@2x.png" id="icon-forecast" />
-              <div class="forecastTemperature">
-                <strong><span id="max">${Math.round(
-                  forecast.main.temp_max
-                )}º </span></strong>|
-                <span id="min">${Math.round(forecast.main.temp_min)}º</span>
-              </div>
-            </div>`;
+    <h5>${formatHour(forecast.dt * 1000)}</h5>
+    <img src="http://openweathermap.org/img/wn/${
+      forecast.weather[0].icon
+    }@2x.png" id="icon-forecast" />
+    <div class="forecastTemperature">
+    <strong><span class="max" id="max${i}"> </span>º</strong>|
+    <span class="min" id="min${i}"></span><span class="min">º</span>
+    </div>
+    </div>`;
+
+    let maxForecastElement = document.querySelector(`#max${i}`);
+    let minForecastElement = document.querySelector(`#min${i}`);
+    maxForecastElement.innerHTML = `${Math.round(forecast.main.temp_max)}`;
+    minForecastElement.innerHTML = `${Math.round(forecast.main.temp_min)}`;
   }
 }
 
@@ -135,8 +139,22 @@ function showFahrTemp(event) {
   let currentTemp = document.querySelector("#temperature");
   let fahrTemperature = (celsiusTemperature * 9) / 5 + 32;
   currentTemp.innerHTML = Math.round(fahrTemperature);
+
   celsius.classList.remove("active");
   fahrLink.classList.add("active");
+
+  for (let i = 0; i <= 5; i++) {
+    let maxForecastElement = document.querySelector(`#max${i}`);
+    max_celsius = maxForecastElement.innerHTML;
+    maxForecastElement.innerHTML = Math.round((max_celsius * 9) / 5 + 32);
+
+    let minForecastElement = document.querySelector(`#min${i}`);
+    min_celsius = minForecastElement.innerHTML;
+    minForecastElement.innerHTML = Math.round((min_celsius * 9) / 5 + 32);
+  }
+
+  fahrLink.removeEventListener("click", showFahrTemp);
+  celsiusLink.addEventListener("click", showCelsiusTemp);
 }
 
 function showCelsiusTemp(event) {
@@ -145,6 +163,19 @@ function showCelsiusTemp(event) {
   currentTemp.innerHTML = Math.round(celsiusTemperature);
   celsius.classList.add("active");
   fahrLink.classList.remove("active");
+
+  for (let i = 0; i <= 5; i++) {
+    let maxForecastElement = document.querySelector(`#max${i}`);
+    max_fahr = maxForecastElement.innerHTML;
+    maxForecastElement.innerHTML = Math.round((max_fahr - 32) * (5 / 9));
+
+    let minForecastElement = document.querySelector(`#min${i}`);
+    min_fahr = minForecastElement.innerHTML;
+    minForecastElement.innerHTML = Math.round((min_fahr - 32) * (5 / 9));
+  }
+
+  celsiusLink.removeEventListener("click", showCelsiusTemp);
+  fahrLink.addEventListener("click", showFahrTemp);
 }
 
 let celsiusTemperature = null;

@@ -125,11 +125,11 @@ h5 {
   color: rgb(73, 73, 73);
 }
 
-#max {
+.max {
   font-size: 15px;
 }
 
-#min {
+.min {
   font-size: 13px;
 }
 .forecastTemperature {
